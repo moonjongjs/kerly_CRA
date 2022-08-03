@@ -1,0 +1,24 @@
+깃허브 푸쉬하기
+
+깃설정
+git init
+
+깃환경설정 사용자.이름
+깃환경설정 사용자.이메일
+git config user.name 'moonjongjs'
+git config user.email 'moonseonjong@naver.com'
+git config user.name
+git config user.email
+
+깃허브 원격지 리포지토리(저장소) origin(url)
+git remote remove origin
+git remote add origin https://github.com/moonjongjs/kerly_CRA.git
+git remote -v
+
+깃허브 스테이징 & 커밋 & 푸쉬
+git add .
+git commit -m '리액트 CRA 마켓컬리 회원가입폼 원본 소스'
+git push origin master
+
+
+

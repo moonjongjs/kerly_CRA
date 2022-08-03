@@ -1,0 +1,5 @@
+# dependencies
+/node_modules
+
+# build 배포
+/build
