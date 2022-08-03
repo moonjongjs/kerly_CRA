@@ -612,43 +612,43 @@ const MemberComponent = ({modal, modalShowFn, 이용약관}) => {
   //   체크시 필수 체크 3개 확인
   const onChangeService=(e)=>{
     let imsi = [];
-    let cnt = 0;
+    const {이용약관동의} = field; //field.이용약관동의
 
     if(e.target.checked){ //체크되면 누적 저장
 
       if(e.target.value==='무료배송, 할인쿠폰 등 혜택/정보 수신 동의'){ //chk4
-        setField({...field, 이용약관동의: [...field.이용약관동의, '무료배송, 할인쿠폰 등 혜택/정보 수신 동의','SNS','이메일'] });
+        setField({...field, 이용약관동의: [...이용약관동의, '무료배송, 할인쿠폰 등 혜택/정보 수신 동의','SNS','이메일'] });
       }
       else if(field.이용약관동의.includes('SNS') && e.target.value==='이메일'){
-        setField({...field, 이용약관동의: [...field.이용약관동의, '무료배송, 할인쿠폰 등 혜택/정보 수신 동의','이메일'] });
+        setField({...field, 이용약관동의: [...이용약관동의, '무료배송, 할인쿠폰 등 혜택/정보 수신 동의','이메일'] });
       }
       else if(field.이용약관동의.includes('이메일') && e.target.value==='SNS'){
-        setField({...field, 이용약관동의: [...field.이용약관동의, '무료배송, 할인쿠폰 등 혜택/정보 수신 동의','SNS'] });
+        setField({...field, 이용약관동의: [...이용약관동의, '무료배송, 할인쿠폰 등 혜택/정보 수신 동의','SNS'] });
       }
       else{
-        setField({...field, 이용약관동의: [...field.이용약관동의, e.target.value] });
+        setField({...field, 이용약관동의: [...이용약관동의, e.target.value] });
       }
 
     }
     else{ //체크해제시는 배열에 저장된  데이터를 삭제 : 체크해제된 데이터만 filter()
         if(e.target.value==='무료배송, 할인쿠폰 등 혜택/정보 수신 동의'){ //chk4
-          imsi = field.이용약관동의.filter((item)=> item !== e.target.value); //삭제1
+          imsi = 이용약관동의.filter((item)=> item !== e.target.value); //삭제1
           imsi = imsi.filter((item)=> item !== 'SNS');                       //삭제2    
           imsi = imsi.filter((item)=> item !== '이메일');                    //삭제3  
           setField({...field, 이용약관동의: imsi });
         } 
-        else if( field.이용약관동의.includes('SNS') && e.target.value==='이메일' ){
-          imsi = field.이용약관동의.filter((item)=> item !== '이메일'); //삭제1
+        else if( 이용약관동의.includes('SNS') && e.target.value==='이메일' ){
+          imsi = 이용약관동의.filter((item)=> item !== '이메일'); //삭제1
           imsi = imsi.filter((item)=> item !== '무료배송, 할인쿠폰 등 혜택/정보 수신 동의'); //삭제2
           setField({...field, 이용약관동의: imsi });
         } 
-        else if( field.이용약관동의.includes('이메일') && e.target.value==='SNS' ){
-          imsi = field.이용약관동의.filter((item)=> item !== 'SNS'); //삭제1
+        else if( 이용약관동의.includes('이메일') && e.target.value==='SNS' ){
+          imsi = 이용약관동의.filter((item)=> item !== 'SNS'); //삭제1
           imsi = imsi.filter((item)=> item !== '무료배송, 할인쿠폰 등 혜택/정보 수신 동의'); //삭제2
           setField({...field, 이용약관동의: imsi });
         } 
         else{      
-          imsi = field.이용약관동의.filter((item)=>item !== e.target.value ); //삭제하고 나머지만 저장
+          imsi = 이용약관동의.filter((item)=>item !== e.target.value ); //삭제하고 나머지만 저장
           setField({...field, 이용약관동의: imsi });
         }
     }
